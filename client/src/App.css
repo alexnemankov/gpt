@@ -1,5 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Cinzel:wght@500;700&display=swap');
 
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+.network-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.network-background::before,
+.network-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.network-background::before {
+  background: radial-gradient(circle at 25% 20%, rgba(120, 220, 255, 0.16), transparent 45%),
+    radial-gradient(circle at 75% 80%, rgba(110, 120, 255, 0.14), transparent 42%);
+}
+
+.network-background::after {
+  backdrop-filter: blur(1.4px);
+  background: linear-gradient(140deg, rgba(7, 10, 28, 0.2), rgba(2, 5, 18, 0.5));
+}
+
 :root {
   --night: #0d0b1a;
   --plum: #32134c;
@@ -11,13 +43,15 @@
 body {
   background: radial-gradient(circle at top, rgba(120, 90, 200, 0.25), transparent 45%),
     radial-gradient(circle at bottom, rgba(20, 140, 220, 0.25), transparent 50%),
-    linear-gradient(160deg, var(--night) 0%, #1a102b 50%, rgba(14, 25, 55, 0.85) 100%);
+    linear-gradient(160deg, #03040d 0%, var(--night) 40%, #1a102b 70%, rgba(14, 25, 55, 0.88) 100%);
   min-height: 100vh;
   color: #f5f4ff;
   font-family: 'Barlow', 'Segoe UI', sans-serif;
 }
 
 .app-shell {
+  position: relative;
+  z-index: 2;
   padding: 2rem 5vw 4rem;
   display: flex;
   flex-direction: column;
